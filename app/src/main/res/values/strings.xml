@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Masarapp</string>
+    <string name="title_activity_maps">Masarapp</string>
+    <string name="google_maps_key">AIzaSyBDiB625fniYTA1TDBbvo_z9aUNxPfjlJg</string>
+</resources>
