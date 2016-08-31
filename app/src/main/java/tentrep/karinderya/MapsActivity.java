@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,7 +30,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback ,GoogleMap.OnMarkerClickListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback ,GoogleMap.OnMarkerClickListener {
     private MarkerOptions options = new MarkerOptions();
     private ArrayList<LatLng> latlngs = new ArrayList<>();
     HashMap<String, String> markerMap = new HashMap<String, String>();
@@ -43,8 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String[] array3 = new String[]{};
     String[] array5 = new String[]{};
     String[] array7 = new String[]{};
-    String[] array9 = new String[]{};
-    String[] array11 = new String[]{};
+
     Bundle bundle = new Bundle();
     //String[] array7 = new String[]{};
     public int num=0;
@@ -55,6 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         new GetTextViewData(context).execute();
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -97,24 +98,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String[] array4 = new String[total];
                 String[] array6 = new String[total];
                 String[] array8 = new String[total];
-                String[] array10 = new String[total];
-                String[] array12 = new String[total];
+
                 for(int i=0;i<total;i++) {
                     json = jArray.getJSONObject(i);
                     array2[i] = json.getString("karinderya_lat");
                     array4[i] = json.getString("karinderya_long");
                     array6[i] = json.getString("karinderya_name");
-                    array8[i] = json.getString("karinderya_ave_star1");
-                    array10[i] = json.getString("karinderya_ave_star2");
-                    array12[i] = json.getString("karinderya_ave_star3");
+                    array8[i] = json.getString("karindeya_id");
+
                 }
                 array1=array2.clone();
                 array3=array4.clone();
                 array5=array6.clone();
                 array7=array8.clone();
-                array9=array10.clone();
-                array11=array12.clone();
-            //    array7=array8.clone();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -156,10 +152,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
        for (index3=0; index3 < array1.length; index3++) {
             if (loc.getTitle().equals(array5[index3])){
-                bundle.putString("name", loc.getTitle());
-                bundle.putString("star1", array7[index3]);
+                bundle.putString("id", array7[index3]);
+              /*  bundle.putString("star1", array7[index3]);
                 bundle.putString("star2", array9[index3]);
-                bundle.putString("star3", array11[index3]);
+                bundle.putString("star3", array11[index3]);*/
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
