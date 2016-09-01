@@ -14,6 +14,8 @@ import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -129,7 +131,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         LatLng APC = new LatLng(14.531037, 121.021453);
-        mMap.addMarker(new MarkerOptions().position(APC).title("Marker in APC"));
         for(int index=0; index<array1.length; index++)
        {
         latlngs.add(new LatLng(Float.valueOf(array1[index]), Float.valueOf(array3[index])));
